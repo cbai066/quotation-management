@@ -1,4 +1,4 @@
-# quotation_management
+# Quotation Management System
 This is the quotation management system built with Odoo 15. To test the app, please follow the following instruction.
 
 ## Getting started with Odoo
