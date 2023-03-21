@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--product form-->
+    <record model="ir.ui.view" id="product_form">
+        <field name="name">product_table_form</field>
+        <field name="model">product.table</field>
+        <field name="arch" type="xml">
+            <form string="Product Form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="mpn"/>
+                            <field name="supplier_id"/>
+                        </group>
+                        <group>
+                            <field name="price"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="product_search" model="ir.ui.view">
+        <field name="name">product_search</field>
+        <field name="model">product.table</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="supplier_id"/>
+                <field name="mpn"/>
+                <field name="import_date"/>
+            </search>
+        </field>
+    </record>
+
+    <!--product tree-->
+    <record model="ir.ui.view" id="product_tree">
+        <field name="name">product_tree</field>
+        <field name="model">product.table</field>
+        <field name="arch" type="xml">
+            <tree string="Product Tree">
+                <field name="supplier_id" string="Supplier"/>
+                <field name="mpn" string="Supplier Product"/>
+                <field name="available_units"/>
+                <field name="price"/>
+                <field name="import_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--product action-->
+    <record model="ir.actions.act_window" id="action_product">
+        <field name="name">Quotations</field>
+        <field name="res_model">product.table</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="pc_oneline_qms" name="PCOnline QMS" sequence="10"/>
+    <menuitem id="product_first" name="Products" parent="product_supplier.pc_oneline_qms" sequence="10"/>
+    <menuitem id="product_quotations" name="Quotations" parent="product_supplier.pc_oneline_qms" sequence="20"/>
+    <menuitem id="product_second" name="Quotations" parent="product_supplier.product_quotations"
+              action="action_product" sequence="10"/>
+
+    <!--all_supplier_products form-->
+    <record model="ir.ui.view" id="all_supplier_products_form">
+        <field name="name">all_supplier_products_form</field>
+        <field name="model">all.supplier.products</field>
+        <field name="arch" type="xml">
+            <form string="Supplier Data Form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="mpn"/>
+                            <field name="supplier_id"/>
+                            <field name="price"/>
+                        </group>
+                        <group>
+                            <field name="available_units"/>
+                            <field name="import_date"/>
+                        </group>
+                        <group cor="2">
+                            <field name="product_detail"/>
+                        </group>
+                    </group>
+                    <notebook string="Quatations">
+                        <page string="Quatations">
+                            <field name="quatations_ids">
+                                <tree default_order="price desc">
+                                    <field name="supplier_id"/>
+                                    <field name="mpn" string="Supplier Product"/>
+                                    <field name="create_date" string="Create Date"/>
+                                    <field name="price"/>
+                                    <field name="available_units"/>
+                                    <field name="import_date"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <notebook string="Supplier">
+                        <page string="Supplier">
+                            <field name="supplier_ids">
+                                <tree>
+                                    <field name="supplier_id"/>
+                                    <field name="mpn" string="Supplier Product"/>
+                                    <field name="product_detail"/>
+                                    <field name="create_date" string="Create Date"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="all_supplier_products_search" model="ir.ui.view">
+        <field name="name">all_supplier_products_search</field>
+        <field name="model">all.supplier.products</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="supplier_id"/>
+                <field name="mpn"/>
+                <field name="import_date"/>
+            </search>
+        </field>
+    </record>
+
+    <!--all_supplier_products tree-->
+    <record model="ir.ui.view" id="all_supplier_products_tree">
+        <field name="name">all_supplier_products_tree</field>
+        <field name="model">all.supplier.products</field>
+        <field name="arch" type="xml">
+            <tree string="Supplier Data Tree" import="0">
+                <field name="supplier_id"/>
+                <field name="mpn"/>
+                <field name="product_detail"/>
+                <field name="price"/>
+                <field name="available_units"/>
+                <field name="import_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--all_supplier_products action-->
+    <record model="ir.actions.act_window" id="action_all_supplier_products">
+        <field name="name">All Supplier Products</field>
+        <field name="res_model">all.supplier.products</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="all_supplier_products_second" name="All Supplier Products" parent="product_supplier.product_first"
+              action="action_all_supplier_products" sequence="10"/>
+
+
+
+
+    <!--supplier tree-->
+    <record model="ir.ui.view" id="supplier_tree">
+        <field name="name">supplier_tree</field>
+        <field name="model">supplier.table</field>
+        <field name="arch" type="xml">
+            <tree string="Supplier Tree">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--all_supplier_products action-->
+    <record model="ir.actions.act_window" id="action_supplier">
+        <field name="name">Supplier Table</field>
+        <field name="res_model">supplier.table</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="supplier_table_second" name="Supplier Table" parent="product_supplier.product_first"
+              action="action_supplier" sequence="30"/>
+
+
+    <record model="ir.ui.view" id="all_supplier_products_wizard_form">
+        <field name="name">all_supplier_products_wizard_form</field>
+        <field name="model">all.supplier.products.wizard</field>
+        <field name="arch" type="xml">
+            <form string="supplier Data Form">
+                <sheet>
+                    <group>
+                        <field name="supplier_id"
+                               required="1"
+                               options="{'no_create_edit':1,'no_create':1,'no_open':1}"/>
+                        <field name="upload_excel_file_id" widget="binary"/>
+                    </group>
+                    <footer>
+                        <button string='Confirm' name="import_data" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

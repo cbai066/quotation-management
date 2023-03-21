@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+product_table,product.table,model_product_table,,1,1,1,1
+all_supplier_products,all.supplier.products,model_all_supplier_products,,1,1,1,1
+all_supplier_products_wizard,all.supplier.products.wizard,model_all_supplier_products_wizard,,1,1,1,1
+supplier_table,supplier.table,model_supplier_table,,1,1,1,1
