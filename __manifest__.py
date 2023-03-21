@@ -4,13 +4,12 @@
     'version': '1.0',
     'summary': 'product supplier',
     'description': "product supplier",
-    'website': 'http://www.baidu.com',
+    'website': 'http://www.google.com',
     'depends': ['base'],
     'category': 'Budget',
     'sequence': 1,
     'demo': [],
     'data': [
-        # 'data/data.xml',
         'security/ir.model.access.csv',
         'views/product_supplier.xml'
     ],
