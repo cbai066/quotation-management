@@ -2,7 +2,6 @@
 This is the quotation management system built with Odoo 15. To test the app, please follow the following instruction.
 
 ## Getting started with Odoo
-Getting started with Odoo
 -------------------------
 
 For a standard installation please follow the <a href="https://www.odoo.com/documentation/16.0/administration/install/install.html">Setup instructions</a>
